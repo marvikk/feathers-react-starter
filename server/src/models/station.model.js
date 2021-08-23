@@ -8,5 +8,7 @@ module.exports = function (app) {
     autoload: true
   });
 
+  Model.persistence.setAutocompactionInterval(300000);
+
   return Model;
 };

@@ -7,7 +7,8 @@ module.exports = function (app) {
   const options = {
     Model: createModel(app),
     //paginate: app.get('paginate')
-    paginate: false
+    paginate: false,
+    events: ['custom event']
   };
 
   // Initialize our service with any options it requires
@@ -15,6 +16,7 @@ module.exports = function (app) {
 
   // Get our initialized service so that we can register hooks
   const service = app.service('station');
+  service.timeout = 100000000000000;
 
   service.hooks(hooks);
 };

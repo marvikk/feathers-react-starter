@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import model from './model';
 import { createStore, StoreProvider } from 'easy-peasy';
 import Stations from './Components/Stations';
@@ -8,6 +8,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar';
 
 const store = createStore(model);
 
@@ -19,20 +20,12 @@ function App() {
     <StoreProvider store={store}>
       <Router>
         <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Stations</Link>
-              </li>
-              <li>
-                <Link to="/details">Details</Link>
-              </li>
-              <li>
-                <Link to="/stats">Stats</Link>
-              </li>
-            </ul>
-          </nav>
+          <Navbar bg='dark' variant='dark' style={{ padding: '10px' }}>
+            <Link className="navbar-brand" to="/">Stations</Link>
+            <Link className="navbar-brand" to="/details">Details</Link>
+            <Link className="navbar-brand" to="/stats">Stats</Link>
 
+          </Navbar>
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>

@@ -2,7 +2,18 @@
 
 module.exports = {
   before: {
-    all: [],
+    all: [
+      async (context) => {
+        console.log('here to emmit some shit');
+        await context
+          .app
+          .service('station')
+          .emit('custom event', {
+            hello: 'hello',
+            world: 'world'
+          })
+      }
+    ],
     find: [],
     get: [],
     create: [],
